@@ -64,13 +64,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
   };
 
   const removeProduct = (productId: number) => {
-    try {
-      if (productId && cart.length > 0) {
-        const newCart = cart.filter((item) => item.id !== productId);
-        localStorage.setItem("@RocketShoes:cart", JSON.stringify(newCart));
-        setCart(newCart);
-      }
-    } catch {
+    const productIndex = cart.findIndex((product) => product.id === productId);
+    if (productIndex > -1) {
+      debugger;
+      const newCart = cart.filter((item) => item.id !== productId);
+      localStorage.setItem("@RocketShoes:cart", JSON.stringify(newCart));
+      setCart(newCart);
+    } else {
       toast.error("Erro na remoção do produto");
     }
   };
