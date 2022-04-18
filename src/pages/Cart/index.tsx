@@ -28,8 +28,6 @@ const Cart = (): JSX.Element => {
     };
   });
 
-  console.log(cartFormatted);
-
   const total = formatPrice(
     cartFormatted.reduce((sumTotal, product) => {
       return sumTotal + product.price * product.amount;
